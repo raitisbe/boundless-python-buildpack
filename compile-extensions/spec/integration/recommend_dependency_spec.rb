@@ -10,8 +10,6 @@ describe 'recommend_dependency' do
   let(:manifest) {
     <<-MANIFEST
 ---
-language: matz
-
 url_to_dependency_map:
   -
     match: \/(ruby)-(\\d+\\.\\d+\\.\\d+).tgz
@@ -64,10 +62,8 @@ dependencies:
 
       expect(translated_url).to eq "DEPENDENCY MISSING IN MANIFEST:
 
-Unfortunately, we are either unable to resolve the dependency into
-a binary and version number or the requested version or version range is not supported.
-Please replace the URL with a valid link or the requested version/range
-with a supported version or version range.\n"
+Unfortunately, we are unable to resolve the dependency into
+a binary and version number. Please replace this URL with a valid link.\n"
       expect(status).to be_success
     end
   end
@@ -87,7 +83,7 @@ The versions of ruby supported in this buildpack are:
 - 2.1.1
 - 1.9.3
 
-If you need further help, start by reading: https://github.com/cloudfoundry/matz-buildpack/releases.\n"
+If you need further help, start by reading: http://github.com/cloudfoundry/ruby-buildpack/releases.\n"
       expect(status).to be_success
     end
   end
